@@ -10,10 +10,10 @@ import views.directors
 import views.movies
 import views.genres
 
-from application.models import Movie, Director, Genre
-from application.views.directors import director_ns
-from application.views.genres import genre_ns
-from application.views.movies import movie_ns
+from models import Movie, Director, Genre
+from views.directors import director_ns
+from views.genres import genre_ns
+from views.movies import movie_ns
 from config import Config
 
 from setup_db import db
@@ -22,6 +22,7 @@ from setup_db import db
 def create_app():
     app = Flask(__name__)
     app.config.from_object('config.Config')
+    #app.config.app_context(config).push()
     register_extensions(app)
     app.config['RESTX_JSON'] = {'ensure_ascii': False, 'indent': 2}
     return app
@@ -48,6 +49,7 @@ def create_data(app, db):
 
         g1 = Genre(id=1, name="фэнтези")
         g2 = Genre(id=2, name="фэнтези")
+        db.drop_all()
         db.create_all()
         with db.session.begin():
             db.session.add_all([m1, m2])
@@ -56,6 +58,7 @@ def create_data(app, db):
 
 
 if __name__ == '__main__':
+    app_config = Config()
     app = create_app()
     app.debug = True
     app.run(host="localhost", port=10001, debug=True)

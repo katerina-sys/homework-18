@@ -1,9 +1,9 @@
 from flask import request
 from flask_restx import Namespace, Resource
 
-from application import schema
-from application.setup_db import db
-from application.models import Movie
+import schema
+from setup_db import db
+from models import Movie
 
 movie_ns = Namespace('movie')
 

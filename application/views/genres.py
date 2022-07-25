@@ -1,9 +1,9 @@
 from flask import request
 from flask_restx import Api, Namespace, Resource
 
-from application import schema
-from application.setup_db import db
-from application.models import Genre
+import schema
+from setup_db import db
+from models import Genre
 
 genre_ns = Namespace('genre')
 
