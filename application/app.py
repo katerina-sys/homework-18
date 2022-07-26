@@ -42,7 +42,7 @@ def create_data(app, db):
     with app.app_context():
         m1 = Movie(id=1, title="Гарри Поттер и философский камень", description='text', trailer='text', year=2001,
                    rating=8.2)
-        m2 = Movie(id=1, title="Гарри Поттер и тайная комната", description='text', trailer='text', year=2002,
+        m2 = Movie(id=2, title="Гарри Поттер и тайная комната", description='text', trailer='text', year=2002,
                    rating=8.1)
         d1 = Director(id=1, name="Крис Коламбус")
         d2 = Director(id=2, name="Крис Коламбус")
